@@ -1,0 +1,5 @@
+package som.internousdev.webproj3.dao;
+
+public class HelloStrutsDAO {
+
+}
