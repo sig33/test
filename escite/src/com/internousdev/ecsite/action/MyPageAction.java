@@ -10,6 +10,8 @@ import com.internousdev.ecsite.dao.MyPageDAO;
 import com.internousdev.ecsite.dto.MyPageDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
+//<result name="success">myPage.jsp
+//<result name="error">error.jsp
 public class MyPageAction extends ActionSupport implements SessionAware{
 	
 	public Map<String, Object> session;
@@ -19,9 +21,11 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	private String message;
 	
 	public String execute() throws SQLException{
+		
 		if(!session.containsKey("id")){
 			return ERROR;
 		}
+		
 		//履歴の削除がされているか否かチェックしている
 		if(deleteFlg == null){
 			String item_transaction_id = session.get("id").toString();
@@ -29,6 +33,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			
 			//DBから取得した履歴情報をmyPageListに格納している
 			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
+			
 		}else if(deleteFlg.equals("1")){
 			
 			//deleteメソッドを呼び出して履歴の削除を行う
@@ -51,6 +56,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		if(res > 0){
 			myPageList = null;
 			setMessage("商品情報を正しく削除しました。");
+			
 		}else if(res == 0){
 			setMessage("商品情報の削除に失敗しました。");
 		}

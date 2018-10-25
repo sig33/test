@@ -8,6 +8,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.ecsite.dao.BuyItemCompleteDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
+//<result name="success">buyItemComplete.jsp
+//<result name="back">buyItem.jsp
 public class BuyItemConfirmAction extends ActionSupport implements SessionAware{
 	
 	public Map<String, Object> session;

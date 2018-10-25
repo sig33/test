@@ -6,13 +6,16 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+
+//<result name="success">userCreateConfirm.jsp
+//<result name="error">userCreate.jsp
 public class UserCreateConfirmAction extends ActionSupport implements SessionAware{
 	
 	private String loginUserId;
 	private String loginPassword;
 	private String userName;
 	public Map<String, Object> session;
-	private String errorMassage;
+	private String errorMessage;
 	
 	public String execute(){
 		
@@ -26,8 +29,9 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("loginUserId", loginUserId);
 			session.put("loginPassword", loginPassword);
 			session.put("userName", userName);
+			
 		}else{
-			setErrorMassage("未入力の項目があります。");
+			setErrorMessage("未入力の項目があります。");
 			
 			result = ERROR;
 		}
@@ -55,10 +59,10 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setSession(Map<String, Object> session){
 		this.session = session;
 	}
-	public String getErrorMassage(){
-		return errorMassage;
+	public String getErrorMessage(){
+		return errorMessage;
 	}
-	public void setErrorMassage(String errorMassage){
-		this.errorMassage = errorMassage;
+	public void setErrorMessage(String errorMessage){
+		this.errorMessage = errorMessage;
 	}
 }

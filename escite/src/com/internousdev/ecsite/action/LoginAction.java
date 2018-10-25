@@ -10,6 +10,9 @@ import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.internousdev.ecsite.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+//<result name="success">buyItem.jsp
+//<result name="error">login.jsp
 public class LoginAction extends ActionSupport implements SessionAware{
 	
 	private String loginUserId;

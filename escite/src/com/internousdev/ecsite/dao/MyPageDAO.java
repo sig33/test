@@ -44,6 +44,7 @@ public class MyPageDAO {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+			
 		}finally{
 			connection.close();
 		}
@@ -55,6 +56,7 @@ public class MyPageDAO {
 		String sql = "DELETE FROM user_buy_item_transaction WHERE item_transaction_id = ? AND user_master_id = ?";
 		
 		PreparedStatement preparedStatement;
+		
 		int result = 0;
 		
 		try{
@@ -63,8 +65,10 @@ public class MyPageDAO {
 			preparedStatement.setString(2, user_master_id);
 			
 			result = preparedStatement.executeUpdate();
+			
 		}catch(SQLException e){
 			e.printStackTrace();
+			
 		}finally{
 			connection.close();
 		}

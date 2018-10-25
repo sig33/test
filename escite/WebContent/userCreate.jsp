@@ -29,8 +29,8 @@
 			<p>UserCreare</p>
 		</div>
 		<div>
-			<s:if test="errorMassage != ''">
-				<s:property value="errorMassage" escape="false"/>
+			<s:if test="errorMessage != ''">
+				<s:property value="errorMessage" escape="false"/>
 			</s:if>
 			<table>
 			<s:form action="UserCreateConfirmAction">

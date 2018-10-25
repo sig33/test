@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.ecsite.dao.UserCreateCompleteDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
+//<result name="success">userCreateComplete.jsp
 public class UserCreateCompleteAction extends ActionSupport implements SessionAware{
 	
 	private String loginUserId;
@@ -20,7 +21,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	public String execute() throws SQLException{
 		
 		//DAOを経由して入力された内容をDBに登録します
-		userCreateCompleteDAO.cerateUser(session.get("loginUserId").toString(),
+		userCreateCompleteDAO.createUser(session.get("loginUserId").toString(),
 				session.get("loginPassword").toString(),
 				session.get("userName").toString());
 		

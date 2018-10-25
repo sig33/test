@@ -6,6 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+//<result name="success">home.jsp
 public class BuyItemCompleteAction extends ActionSupport implements SessionAware{
 	
 	public Map<String, Object> session;

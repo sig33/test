@@ -8,6 +8,8 @@ import com.internousdev.ecsite.dao.BuyItemDAO;
 import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
+//<result name="login">login.jsp
+//<result name="success">buyItem.jsp
 public class HomeAction extends ActionSupport implements SessionAware{
 	
 	public Map<String, Object> session;
