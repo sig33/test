@@ -11,18 +11,18 @@ import com.internousdev.webproj5.dto.InquiryDTO;
 import com.internousdev.webproj5.util.DBConnector;
 
 public class InquiryCompleteDAO {
-
+	
 	List<InquiryDTO> inquiryDTOList = new ArrayList<InquiryDTO>();
-
+	
 	public List<InquiryDTO> select(){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-
-		String sql = "select * from inquiry";
+		
+		String sql ="select * from inquiry";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs= ps.executeQuery();
-
+			ResultSet rs = ps.executeQuery();
+			
 			while(rs.next()){
 				InquiryDTO dto = new InquiryDTO();
 				dto.setName(rs.getString("name"));
@@ -44,13 +44,13 @@ public class InquiryCompleteDAO {
 		int ret = 0;
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-
+		
 		String sql = "insert into inquiry values(?,?,?)";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, name);
-			ps.setString(2, qtype);
-			ps.setString(3, body);
+			ps.setString(1,name);
+			ps.setString(2,qtype);
+			ps.setString(3,body);
 			int i = ps.executeUpdate();
 			if(i > 0){
 				System.out.println(i + "件登録されました");

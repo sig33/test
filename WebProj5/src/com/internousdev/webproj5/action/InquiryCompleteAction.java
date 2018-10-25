@@ -11,14 +11,14 @@ import com.internousdev.webproj5.dto.InquiryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class InquiryCompleteAction extends ActionSupport implements SessionAware{
-
+	
 	private String name;
 	private String qtype;
 	private String body;
-
+	
 	List<InquiryDTO> inquiryDTOList = new ArrayList<InquiryDTO>();
 	private Map<String, Object> session;
-
+	
 	public String execute(){
 		String ret = ERROR;
 		InquiryCompleteDAO dao = new InquiryCompleteDAO();
@@ -26,7 +26,7 @@ public class InquiryCompleteAction extends ActionSupport implements SessionAware
 		if(count > 0){
 			inquiryDTOList = dao.select();
 			session.put("inquiryDTOList", inquiryDTOList);
-
+			
 			ret = SUCCESS;
 		}
 		return ret;
@@ -55,5 +55,4 @@ public class InquiryCompleteAction extends ActionSupport implements SessionAware
 	public void setSession(Map<String, Object> session){
 		this.session = session;
 	}
-
 }

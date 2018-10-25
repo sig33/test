@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -14,7 +15,6 @@
 <br>
 <table>
 	<tbody>
-
 	<tr>
 		<th>USERID</th>
 		<th>USERNAME</th>
@@ -29,10 +29,9 @@
 		<td><s:property value="result"/></td>
 	</tr>
 	</s:iterator>
-
 	</tbody>
-</table>
 
+</table>
 
 </body>
 </html>

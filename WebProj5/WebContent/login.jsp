@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -10,7 +11,7 @@
 
 <body>
 
-<s:property value="#session.loginDTOList.get(0).username"/>さん、ようこそ!
+<s:property value="#session.loginDTOList.get(0).username"/>さん、ようこそ！
 
 <br>
 <table>
@@ -20,15 +21,14 @@
 	<th>PASSWORD</th>
 </tr>
 
-<tr>
 <s:iterator value="#session.loginDTOList">
+<tr>
 	<td><s:property value="username"/></td>
 	<td><s:property value="password"/></td>
+</tr>
 </s:iterator>
 </tbody>
 </table>
-
-
 
 </body>
 </html>

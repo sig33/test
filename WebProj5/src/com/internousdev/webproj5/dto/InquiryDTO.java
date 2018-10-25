@@ -1,11 +1,11 @@
 package com.internousdev.webproj5.dto;
 
 public class InquiryDTO {
-
+	
 	private String name;
 	private String qtype;
 	private String body;
-
+	
 	public String getName(){
 		return name;
 	}
@@ -24,5 +24,4 @@ public class InquiryDTO {
 	public void setBody(String body){
 		this.body = body;
 	}
-
 }
