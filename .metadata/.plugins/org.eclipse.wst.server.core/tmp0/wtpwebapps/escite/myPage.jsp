@@ -29,11 +29,11 @@
 			<p>MyPage</p>
 		</div>
 		<div>
-			<s:if test="myPageList == null">
+			<s:if test="myPageList == null || myPageList.size() == 0">
 				<h3>ご購入情報はありません。</h3>
 			</s:if>
 			
-			<s:elseif test="message == null">
+			<s:elseif test="myPageList != null">
 				<h3>ご購入情報は以下になります。</h3>
 				<table border="1">
 					<tr>

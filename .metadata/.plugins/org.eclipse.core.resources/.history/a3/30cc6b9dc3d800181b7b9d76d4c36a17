@@ -1,0 +1,72 @@
+package com.internousdev.ecsite.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.internousdev.ecsite.dto.ItemListDTO;
+import com.internousdev.ecsite.util.DBConnector;
+
+public class ItemListDAO {
+	
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
+	
+	//DBからアイテムリストを取得するためのメソッド
+	public ArrayList<ItemListDTO> getItemListInfo(String item_transaction_id, String user_master_id) throws SQLException{
+		
+		ArrayList<ItemListDTO> itemListDTO = new ArrayList<ItemListDTO>();
+		
+		String sql = "SELECT item_info_transaction where id = ?";
+		
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			//取得した結果を1件ずつDTOに格納し、更にDTOをArrayListに格納している。
+			while(resultSet.next()){
+				
+				ItemListDTO dto = new ItemListDTO();
+				dto.setId(resultSet.getString("id"));
+				dto.setItemName(resultSet.getString("item_name"));
+				dto.setItemPrice(resultSet.getString("item_price"));
+				dto.setItemStock(resultSet.getString("item_stock"));
+				itemListDTO.add(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}finally{
+			connection.close();
+		}
+		return ItemListDTO;
+	}
+	//DBからアイテムを削除するためのメソッド
+	public int itemListDelete(String item_transaction_id, String user_master_id)throws SQLException{
+		
+		String sql = "DELETE FROM item_info_transaction WHERE id = ?";
+		
+		PreparedStatement preparedStatement;
+		
+		int result = 0;
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+			
+			result = preparedStatement.executeUpdate();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}finally{
+			connection.close();
+		}
+		//Actionクラスに削除した件数を返す
+		return result;
+	}
+}

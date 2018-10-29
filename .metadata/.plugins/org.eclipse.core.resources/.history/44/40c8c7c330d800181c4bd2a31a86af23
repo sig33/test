@@ -1,0 +1,8 @@
+package com.internousdev.ecsite.action;
+
+public class ItemCreateConfirmAction {
+	
+	public String execute(){
+		return SUCCESS;
+	}
+}

@@ -26,7 +26,7 @@
 	
 	<div id = "main">
 		<div id = "top">
-			<p>UserCreare</p>
+			<p>UserCreate</p>
 		</div>
 		<div>
 			<s:if test="errorMessage != ''">
@@ -64,8 +64,7 @@
 			</s:form>
 			</table>
 			<div>
-				<span>前画面に戻る場合は</span>
-				<a href='<s:url action="HomeAction"/>'>こちら</a>
+				<span>Homeへ戻る場合は</span><a href='<s:url action="GoHomeAction"/>'>こちら</a>
 			</div>
 		</div>
 	</div>
