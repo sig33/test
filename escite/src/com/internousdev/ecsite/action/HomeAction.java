@@ -22,6 +22,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		//一度ログインしている場合はログイン認証画面に遷移させることなく、商品画面へ遷移させる
 		//containsKeyメソッドは、指定したキーが存在するか確認し、キーが存在する場合はtrueを返す
 		if(session.containsKey("id")){
+			
 			BuyItemDAO buyItemDAO = new BuyItemDAO();
 			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
 			
