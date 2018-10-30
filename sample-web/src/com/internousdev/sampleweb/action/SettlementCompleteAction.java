@@ -67,6 +67,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 				int totalPrice = Integer.parseInt(String.valueOf(cartInfoDAO.getTotalPrice(String.valueOf(session.get("loginId")))));
 				session.put("totalPrice", totalPrice);
+				
 				result = SUCCESS;
 			}
 		}

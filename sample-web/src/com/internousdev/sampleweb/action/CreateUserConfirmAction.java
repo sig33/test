@@ -37,6 +37,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 	public String execute() {
 		
 		String result = ERROR;
+		
 		InputChecker inputChecker = new InputChecker();
 
 		session.put("familyName", familyName);
@@ -73,6 +74,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 			session.put("emailErrorMessageList", emailErrorMessageList);
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
+			
 			result = ERROR;
 		}
 		return result;

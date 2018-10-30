@@ -45,18 +45,19 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.put("firstNameKana", firstNameKana);
 		
 		if(sex==null) {
-			
 			session.put("sex", MALE);
 			
 		}else {
 			session.put("sex", String.valueOf(session.get("sex")));
 		}
+		
 		sexList.add(MALE);
 		sexList.add(FEMALE);
 		session.put("sexList", sexList);
 		session.put("email", email);
 		session.put("loginId", loginId);
 		session.put("password", password);
+		
 		result = SUCCESS;
 		return result;
 	}

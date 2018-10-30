@@ -81,7 +81,7 @@
 				<s:iterator value="#session.productInfoDtoList">
 				
 				<!-- 	<div class="product-list">
-						<div class="product-list-box"> -->
+							<div class="product-list-box"> -->
 						
 						<div class="recommend-box">
 							<a href='<s:url action="ProductDetailsAction">
@@ -89,6 +89,7 @@
 							</s:url>'><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-100"/></a>
 							<s:property value="productName"/><br>
 						</div>
+						
 				<!-- 		</div>
 					</div>
 				-->

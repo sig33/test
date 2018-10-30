@@ -16,6 +16,7 @@
 	<jsp:include page="header.jsp" />
 	
 	<div id="contents">
+	
 		<h1>決済確認画面</h1>
 		
 		<s:if test="#session.destinationInfoDtoList.size()>0">

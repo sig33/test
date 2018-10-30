@@ -56,13 +56,16 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		&& newPasswordIncorrectErrorMessageList.size()==0) {
 
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
+			
 			if(userInfoDAO.isExistsUserInfo(loginId, password)) {
 				
 				String concealedPassword = userInfoDAO.concealPassword(password);
 				session.put("loginId", loginId);
 				session.put("newPassword", newPassword);
 				session.put("concealedPassword", concealedPassword);
+				
 				result = SUCCESS;
+				
 			} else {
 				passwordIncorrectErrorMessageList.add("入力されたパスワードが異なります。");
 				session.put("passwordIncorrectErrorMessageList", passwordIncorrectErrorMessageList);

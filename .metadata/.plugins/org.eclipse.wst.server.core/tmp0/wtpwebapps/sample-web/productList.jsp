@@ -19,7 +19,7 @@
 
 		<h1>商品一覧画面</h1>
 		
-		<s:if test="productInfoDtoList==null">
+		<s:if test="productInfoDtoList == null">
 			<div class="info">
 				検索結果がありません。
 			</div>

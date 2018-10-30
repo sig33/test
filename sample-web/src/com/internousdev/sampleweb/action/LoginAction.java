@@ -42,6 +42,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		if(savedLoginId==true) {
 			session.put("savedLoginId", true);
 			session.put("loginId", loginId);
+			
 		}else {
 			session.put("savedLoginId", false);
 			session.remove("loginId", loginId);
@@ -67,6 +68,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		}
 
 		UserInfoDAO userInfoDao = new UserInfoDAO();
+		
 		if(userInfoDao.isExistsUserInfo(loginId, password)) {
 			
 			if(userInfoDao.login(loginId, password) > 0) {
@@ -77,20 +79,25 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				CartInfoDAO cartInfoDao = new CartInfoDAO();
 
 				count = cartInfoDao.linkToLoginId(String.valueOf(session.get("tempUserId")),loginId);
+				
 				if(count > 0) {
 					DestinationInfoDAO destinationInfoDao = new DestinationInfoDAO();
+					
 					try {
 						List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
 						destinationInfoDtoList = destinationInfoDao.getDestinationInfo(loginId);
 						Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
+						
 						if(!(iterator.hasNext())) {
 							destinationInfoDtoList = null;
 						}
 						session.put("destinationInfoDtoList", destinationInfoDtoList);
+						
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 					result = "settlement";
+					
 				}else {
 					result = SUCCESS;
 				}

@@ -40,6 +40,7 @@ public class UserInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,6 +60,7 @@ public class UserInfoDAO {
 			preparedStatement.setString(1, loginId);
 			preparedStatement.setString(2, password);
 			ResultSet resultSet = preparedStatement.executeQuery();
+			
 			while(resultSet.next()) {
 				if (resultSet.getInt("count") > 0) {
 					result = true;
@@ -69,6 +71,7 @@ public class UserInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -76,6 +79,7 @@ public class UserInfoDAO {
 	}
 
 	public UserInfoDTO getUserInfo(String loginId, String password) {
+		
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
@@ -87,6 +91,7 @@ public class UserInfoDAO {
 			preparedStatement.setString(1, loginId);
 			preparedStatement.setString(2, password);
 			ResultSet resultSet = preparedStatement.executeQuery();
+			
 			while(resultSet.next()) {
 				userInfoDTO.setId(resultSet.getInt("id"));
 				userInfoDTO.setUserId(resultSet.getString("user_id"));
@@ -106,6 +111,7 @@ public class UserInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -124,6 +130,7 @@ public class UserInfoDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
 			ResultSet resultSet = preparedStatement.executeQuery();
+			
 			while(resultSet.next()) {
 				userInfoDTO.setId(resultSet.getInt("id"));
 				userInfoDTO.setUserId(resultSet.getString("user_id"));
@@ -144,6 +151,7 @@ public class UserInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -164,11 +172,13 @@ public class UserInfoDAO {
 			preparedStatement.setString(1, password);
 			preparedStatement.setString(2, loginId);
 			result = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -180,6 +190,7 @@ public class UserInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int result=0;
+		
 		String sql = "update user_info set logined=1 where user_id=? and password=?";
 		
 		try {
@@ -193,6 +204,7 @@ public class UserInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -211,11 +223,13 @@ public class UserInfoDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
 			result = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -226,12 +240,15 @@ public class UserInfoDAO {
 		
 		int beginIndex = 0;
 		int endIndex = 1;
+		
 		if(password.length() > 1) {
 			endIndex = 2;
 		}
+		
 		StringBuilder stringBuilder = new StringBuilder("****************");
 
 		String concealPassword = stringBuilder.replace(beginIndex, endIndex, password.substring(beginIndex,endIndex)).toString();
+		
 		return concealPassword;
 	}
 }

@@ -77,7 +77,6 @@
 		</s:if>
 		
 		<s:form action="CreateUserConfirmAction">
-		
 			<table class="vertical-list-table">
 				<tr>
 					<th scope="row">姓</th>

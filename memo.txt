@@ -1,0 +1,14 @@
+css
+
+☆white-space:nowrap;
+	(自動的に改行しない)
+
+☆overflow:hidden;
+	(はみ出た部分を隠す)
+
+☆overflow:scroll;
+	(はみ出た部分を縦方向にスクロール出来るようにする)
+
+☆overflow:scroll;
+＋white-space:nowrap;
+	(横方向にスクロールできるようにする)
