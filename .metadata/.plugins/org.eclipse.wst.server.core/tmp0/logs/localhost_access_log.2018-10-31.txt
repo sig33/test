@@ -157,3 +157,6 @@
 0:0:0:0:0:0:0:1 - - [31/Oct/2018:13:43:44 +0900] "GET /sample-web/images/select.png HTTP/1.1" 404 246
 0:0:0:0:0:0:0:1 - - [31/Oct/2018:13:43:49 +0900] "POST /sample-web/LoginAction.action HTTP/1.1" 200 4518
 0:0:0:0:0:0:0:1 - - [31/Oct/2018:13:43:49 +0900] "GET /sample-web/images/select.png HTTP/1.1" 404 246
+127.0.0.1 - - [31/Oct/2018:15:58:17 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [31/Oct/2018:15:58:19 +0900] "GET /sample-web/ HTTP/1.1" 200 695
+0:0:0:0:0:0:0:1 - - [31/Oct/2018:15:58:22 +0900] "GET /sample-web/HomeAction HTTP/1.1" 200 9429
