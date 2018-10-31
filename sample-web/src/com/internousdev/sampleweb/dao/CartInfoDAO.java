@@ -41,7 +41,7 @@ public class CartInfoDAO {
 		+ " LEFT JOIN product_info as pi"
 		+ " ON ci.product_id = pi.product_id"
 		+ " WHERE ci.user_id = ?"
-		+ " group by product_id";
+		+ " GROUP BY product_id";
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -50,7 +50,6 @@ public class CartInfoDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				
 				CartInfoDTO cartInfoDTO = new CartInfoDTO();
 				cartInfoDTO.setId(resultSet.getInt("id"));
 				cartInfoDTO.setUserId(resultSet.getString("user_id"));
@@ -97,7 +96,6 @@ public class CartInfoDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				
 				totalPrice = resultSet.getInt("total_price");
 			}
 		} catch (SQLException e) {
@@ -105,6 +103,7 @@ public class CartInfoDAO {
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -112,12 +111,14 @@ public class CartInfoDAO {
 	}
 
 	public int regist(String userId, String tempUserId, int productId, String productCount, int price) {
+		
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
+		
 		String sql = "insert into cart_info(user_id, temp_user_id, product_id, product_count, price, regist_date)"
 				+ " values (?, ?, ?, ?, ?, now())";
-
+		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
@@ -125,13 +126,14 @@ public class CartInfoDAO {
 			preparedStatement.setInt(3, productId);
 			preparedStatement.setString(4, productCount);
 			preparedStatement.setInt(5, price);
-
 			count = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -139,21 +141,24 @@ public class CartInfoDAO {
 	}
 
 	public int delete(String id) {
+		
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
+		
 		String sql = "delete from cart_info where id=?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, id);
-
 			count = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -161,21 +166,24 @@ public class CartInfoDAO {
 	}
 
 	public int deleteAll(String userId) {
+		
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
+		
 		String sql = "delete from cart_info where user_id=?";
-
+		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
-
 			count = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,14 +191,16 @@ public class CartInfoDAO {
 	}
 
 	public boolean isExistsCartInfo() {
-
+		
 		return false;
 	}
 
 	public int linkToLoginId(String tempUserId, String loginId) {
+		
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
+		
 		String sql = "update cart_info set user_id=?, temp_user_id = null where temp_user_id=?";
 
 		try {
@@ -198,15 +208,16 @@ public class CartInfoDAO {
 			preparedStatement.setString(1, loginId);
 			preparedStatement.setString(2, tempUserId);
 			count = preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			connection.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return count;
 	}
 }
-

@@ -11,25 +11,25 @@
 	<title>ヘッダー</title>
 	
 	<script>
-	function goLoginAction(){
-		document.getElementById("form").action="GoLoginAction";
-	}
-	function goMyPageAction(){
-		document.getElementById("form").action="MyPageAction";
-	}
-	function goCartAction(){
-		document.getElementById("form").action="CartAction";
-	}
-	function goProductListAction(){
-		document.getElementById("categoryId").value=1;
-		document.getElementById("form").action="ProductListAction";
-	}
-	function goLogoutAction(){
-		document.getElementById("form").action="LogoutAction";
-	}
-	function goSearchItemAction(){
-		document.getElementById("form").action="SearchItemAction";
-	}
+		function goLoginAction(){
+			document.getElementById("form").action="GoLoginAction";
+		}
+		function goMyPageAction(){
+			document.getElementById("form").action="MyPageAction";
+		}
+		function goCartAction(){
+			document.getElementById("form").action="CartAction";
+		}
+		function goProductListAction(){
+			document.getElementById("categoryId").value=1;
+			document.getElementById("form").action="ProductListAction";
+		}
+		function goLogoutAction(){
+			document.getElementById("form").action="LogoutAction";
+		}
+		function goSearchItemAction(){
+			document.getElementById("form").action="SearchItemAction";
+		}
 	</script>
 	
 </head>

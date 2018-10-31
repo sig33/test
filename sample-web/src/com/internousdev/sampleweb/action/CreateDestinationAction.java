@@ -23,6 +23,7 @@ public class CreateDestinationAction extends ActionSupport implements SessionAwa
 	public String execute() {
 		
 		String result = ERROR;
+		
 		sexList.add(MALE);
 		sexList.add(FEMALE);
 
@@ -37,22 +38,19 @@ public class CreateDestinationAction extends ActionSupport implements SessionAwa
 		result=SUCCESS;
 		return result;
 	}
-
+	
 	public String getSex() {
 		return sex;
 	}
-
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 	public String getCategoryId() {
 		return categoryId;
 	}
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getDefaultSexValue() {
 		return defaultSexValue;
 	}

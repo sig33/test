@@ -41,23 +41,20 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		session.remove("checkListErrorMessageList");
 
 		 if (!(session.containsKey("loginId")) && !(session.containsKey("tempUserId"))) {
-			 
 			 CommonUtility commonUtility = new CommonUtility();
 			 session.put("tempUserId", commonUtility.getRamdomValue());
 		}
 		if(session.containsKey("loginId")) {
-			
 			userId = String.valueOf(session.get("loginId"));
 		}
 		if (!(session.containsKey("loginId")) && session.containsKey("tempUserId")) {
-			
 			userId = String.valueOf(session.get("tempUserId"));
 			tempUserId = String.valueOf(session.get("tempUserId"));
 		}
 		productCount = String.valueOf((productCount.split(" ,",0))[0]);
-
 		CartInfoDAO cartInfoDao = new CartInfoDAO();
 		int count = cartInfoDao.regist(userId,tempUserId,productId,productCount,price);
+		
 		if(count > 0) {
 			result=SUCCESS;
 		}
@@ -66,12 +63,12 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 		
 		if(!(iterator.hasNext())) {
-			
 			cartInfoDtoList = null;
 		}
 		session.put("cartInfoDtoList", cartInfoDtoList);
 		int totalPrice = Integer.parseInt(String.valueOf(cartInfoDao.getTotalPrice(userId)));
 		session.put("totalPrice", totalPrice);
+		
 		return result;
 	}
 	public int getProductId() {
@@ -110,7 +107,6 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
 	public String getProductCount() {
 		return productCount;
 	}
@@ -135,7 +131,6 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-
 	public String getCategoryId() {
 		return categoryId;
 	}
@@ -148,5 +143,4 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }

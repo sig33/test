@@ -19,16 +19,16 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	private Map<String, Object> session;
 	
 	public String execute() {
-
+		
 		 if (!(session.containsKey("loginId")) && !(session.containsKey("tempUserId"))) {
 			 CommonUtility commonUtility = new CommonUtility();
 			 session.put("tempUserId", commonUtility.getRamdomValue());
 		}
-
+		 
 		if(!session.containsKey("logined")) {
 			session.put("logined", 0);
 		}
-
+		
 		if(!session.containsKey("mCategoryList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
@@ -40,11 +40,9 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public List<MCategoryDTO> getmCategoryDtoList() {
 		return mCategoryDtoList;
 	}

@@ -82,5 +82,4 @@ public class DestinationInfoDTO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
 }

@@ -32,11 +32,8 @@ public class InputChecker {
 			stringList.add(propertyName + "は" + minLength + "文字以上" + maxLength + "文字以下で入力してください。");
 		}
 
-
 		///////////入力された文字のタイプから何を判別するか決めます//////////
 		String regularExpression = "";
-
-
 
 		if(availableAlphabeticCharacters || availableKanji || availableHiragana || availableHalfWidthDigit || availableHalfWidthSymbols||availableKatakana||availableFullWidthSymbols){
 			regularExpression = "[";
@@ -85,9 +82,12 @@ public class InputChecker {
 
 		//判別した項目に応じてエラーメッセージを返します
 		String characterType = "";
+		
 		for(int i = 0;i < characterTypeList.size();i++){
+			
 			if(i == 0){
 				characterType += characterTypeList.get(i).toString();
+				
 			}else{
 				characterType += "、" + characterTypeList.get(i).toString();
 			}
@@ -97,14 +97,14 @@ public class InputChecker {
 			stringList.add(propertyName + "は" + characterType + "で入力してください。");
 		}
 
-
 		return stringList;
 	}
 
-
 	//一度目のパスワードと二度目のパスワードが同じかを検証します。
 	public List<String> doPasswordCheck(String password,String reConfirmationPassword){
+		
 		List<String> stringList = new ArrayList<String>();
+		
 		if(!(password.equals(reConfirmationPassword))){
 			stringList.add("入力されたパスワードが異なります。");
 		}

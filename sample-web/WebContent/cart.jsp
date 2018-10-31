@@ -26,7 +26,7 @@
 		
 		<h1>カート画面</h1>
 			
-		<s:if test="#session.checkListErrorMessageList ! =null">
+		<s:if test="#session.checkListErrorMessageList != null">
 			<div class="error">
 				<div class="error-message">
 					<s:iterator value="#session.checkListErrorMessageList">

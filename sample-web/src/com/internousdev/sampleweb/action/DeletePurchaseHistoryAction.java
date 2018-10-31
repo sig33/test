@@ -30,19 +30,16 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 		int count = purchaseHistoryInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
 		
 		if(count > 0) {
-			
 			List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = purchaseHistoryInfoDAO.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
 			Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();
 			
 			if(!(iterator.hasNext())) {
-				
 				purchaseHistoryInfoDtoList = null;
 			}
 			session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
-
 			sexList.add(MALE);
 			sexList.add(FEMALE);
-
+			
 			result=SUCCESS;
 		}
 		return result;
@@ -51,26 +48,21 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 	public List<String> getSexList() {
 		return sexList;
 	}
-
 	public void setSexList(List<String> sexList) {
 		this.sexList = sexList;
 	}
-
 	public String getDefaultSexValue() {
 		return defaultSexValue;
 	}
-
 	public void setDefaultSexValue(String defaultSexValue) {
 		this.defaultSexValue = defaultSexValue;
 	}
-
 	public String getCategoryId() {
 		return categoryId;
 	}
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getSex() {
 		return sex;
 	}
@@ -83,5 +75,4 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }

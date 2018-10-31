@@ -31,6 +31,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 		@SuppressWarnings("unchecked")
 		ArrayList<DestinationInfoDTO> destinationInfoDtoList = (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");
+		
 		for(int i=0;i<purchaseHistoryInfoDtoList.size();i++) {
 			purchaseHistoryInfoDtoList.get(i).setDestinationId(destinationInfoDtoList.get(0).getId());
 		}
@@ -39,7 +40,6 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		int count = 0;
 		
 		for(int i=0; i<purchaseHistoryInfoDtoList.size();i++) {
-			
 			count += purchaseHistoryInfoDAO.regist(
 					String.valueOf(session.get("loginId")),
 					purchaseHistoryInfoDtoList.get(i).getProductId(),
@@ -48,23 +48,20 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 					purchaseHistoryInfoDtoList.get(i).getSubtotal()
 					);
 		}
+		
 		if(count > 0) {
-			
 			CartInfoDAO cartInfoDAO = new CartInfoDAO();
 			count = cartInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
 			
 			if(count > 0) {
-				
 				List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
 				cartInfoDtoList = cartInfoDAO.getCartInfoDtoList(String.valueOf(session.get("loginId")));
 				Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 				
 				if(!(iterator.hasNext())) {
-					
 					cartInfoDtoList = null;
 				}
 				session.put("cartInfoDtoList", cartInfoDtoList);
-
 				int totalPrice = Integer.parseInt(String.valueOf(cartInfoDAO.getTotalPrice(String.valueOf(session.get("loginId")))));
 				session.put("totalPrice", totalPrice);
 				

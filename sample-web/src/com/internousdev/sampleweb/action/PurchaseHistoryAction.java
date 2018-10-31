@@ -30,13 +30,11 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();
 		
 		if(!(iterator.hasNext())) {
-			
 			purchaseHistoryInfoDtoList = null;
 		}
 		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
 
 		if(!session.containsKey("mCategoryList")) {
-			
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);

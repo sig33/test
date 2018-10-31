@@ -30,6 +30,7 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 
 	private Map<String, Object> session;
+	
 	public String execute() {
 		
 		String result = ERROR;
@@ -49,14 +50,12 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 		session.put("hasPreviousPage", paginationDTO.hasPreviousPage());
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-
+		
 		if(!session.containsKey("mCategoryList")) {
-			
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
-
 		result = SUCCESS;
 		return result;
 	}
@@ -64,11 +63,9 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 	public List<MCategoryDTO> getmCategoryDtoList() {
 		return mCategoryDtoList;
 	}
-
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
 	}
-
 	public String getProductName() {
 		return productName;
 	}

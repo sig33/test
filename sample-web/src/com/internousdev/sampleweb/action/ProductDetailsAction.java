@@ -37,7 +37,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware{
 		session.put("imageFilePath", productInfoDTO.getImageFilePath());
 		session.put("imageFileName", productInfoDTO.getImageFileName());
 		session.put("price", productInfoDTO.getPrice());
-
 		session.put("releaseCompany", productInfoDTO.getReleaseCompany());
 		session.put("releaseDate", productInfoDTO.getReleaseDate());
 		session.put("productDescription", productInfoDTO.getProductDescription());
@@ -47,11 +46,9 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware{
 		Iterator<ProductInfoDTO> iterator = productInfoDtoList.iterator();
 		
 		if(!(iterator.hasNext())) {
-			
 			productCountList = null;
 		}
 		if(!productInfoDtoList.isEmpty() || productCountList==null) {
-			
 			session.put("productInfoDtoList", productInfoDtoList);
 			result = SUCCESS;
 		}

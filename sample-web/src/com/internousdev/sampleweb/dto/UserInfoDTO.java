@@ -96,5 +96,4 @@ public class UserInfoDTO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
 }

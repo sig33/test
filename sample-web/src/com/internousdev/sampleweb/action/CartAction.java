@@ -25,6 +25,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	public String execute() {
 		
 		String result = ERROR;
+		
 		String userId = null;
 		CartInfoDAO cartInfoDao = new CartInfoDAO();
 		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
@@ -32,51 +33,43 @@ public class CartAction extends ActionSupport implements SessionAware{
 		session.remove("checkListErrorMessageList");
 
 		if(session.containsKey("loginId")) {
-			
 			userId = String.valueOf(session.get("loginId"));
 			
 		}else if (session.containsKey("tempUserId")) {
-			
 			userId = String.valueOf(session.get("tempUserId"));
 		}
 		cartInfoDtoList = cartInfoDao.getCartInfoDtoList(userId);
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 		
 		if(!(iterator.hasNext())) {
-			
 			cartInfoDtoList = null;
 		}
 		session.put("cartInfoDtoList", cartInfoDtoList);
-
 		int totalPrice = Integer.parseInt(String.valueOf(cartInfoDao.getTotalPrice(userId)));
 		session.put("totalPrice", totalPrice);
+		
 		result = SUCCESS;
 
 		if(!session.containsKey("mCategoryList")) {
-			
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 		return result;
 	}
-
+	
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getKeywords() {
 		return keywords;
 	}
-
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
-
 	public Map<String, Object> getSession() {
 		return session;
 	}

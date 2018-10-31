@@ -32,8 +32,10 @@
 						<ul>
 							<li>
 								<a href='<s:url action="ProductDetailsAction">
-								<s:param name="productId" value="%{productId}"/>
-								</s:url>'><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/></a><br>
+								<s:param name="productId" value="%{productId}"/></s:url>'>
+								<img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/>
+								</a>
+								<br>
 								<s:property value="productName"/><br>
 								<s:property value="productNameKana"/><br>
 								<s:property value="price"/>円<br>

@@ -54,14 +54,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		if(loginIdErrorMessageList.size()!=0
 		&& passwordErrorMessageList.size()!=0) {
-			
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
 			session.put("logined", 0);
 		}
 
 		if(!session.containsKey("mCategoryList")) {
-			
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
@@ -72,7 +70,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		if(userInfoDao.isExistsUserInfo(loginId, password)) {
 			
 			if(userInfoDao.login(loginId, password) > 0) {
-				
 				UserInfoDTO userInfoDTO = userInfoDao.getUserInfo(loginId, password);
 				session.put("loginId", userInfoDTO.getUserId());
 				int count=0;
@@ -106,15 +103,13 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		}
 		return result;
 	}
-
+	
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getLoginId() {
 		return loginId;
 	}
@@ -127,16 +122,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 	public boolean isSavedLoginId() {
 		return savedLoginId;
 	}
-
 	public void setSavedLoginId(boolean savedLoginId) {
 		this.savedLoginId = savedLoginId;
 	}
-
 	public List<String> getLoginIdErrorMessageList() {
 		return loginIdErrorMessageList;
 	}
@@ -155,5 +146,4 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }

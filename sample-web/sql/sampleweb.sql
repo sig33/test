@@ -6,6 +6,7 @@ create database if not exists sampleweb;
 
 use sampleweb;
 
+
 create table user_info(
 id int primary key not null auto_increment comment "ID",
 user_id varchar(16) unique not null comment "ユーザーID",
@@ -22,8 +23,8 @@ regist_date datetime not null comment "登録日",
 update_date datetime not null comment "更新日"
 )
 default charset=utf8
-comment="会員情報テーブル"
-;
+comment="会員情報テーブル";
+
 insert into user_info values
 (1,"guest","guest","インターノウス","ゲストユーザー","いんたーのうす","げすとゆーざー",0,"guest@gmail.com",0,0,now(),now()),
 (2,"guest2","guest2","インターノウス","ゲストユーザー2","いんたーのうす","げすとゆーざー2",0,"guest2@gmail.com",0,0,now(),now()),
@@ -50,6 +51,7 @@ insert into user_info values
 (23,"admin11","admin11","インターノウス","管理者ユーザー11","いんたーのうす","かんりしゃゆーざー11",0,"admin11@gmail.com",1,0,now(),now()),
 (24,"admin12","admin12","インターノウス","管理者ユーザー12","いんたーのうす","かんりしゃゆーざー12",0,"admin12@gmail.com",1,0,now(),now());
 
+
 create table product_info(
 id int primary key not null auto_increment comment "ID",
 product_id int unique not null comment "商品ID",
@@ -68,8 +70,8 @@ update_date datetime comment "更新日",
 foreign key(category_id) references m_category(category_id)
 )
 default charset=utf8
-comment="商品情報テーブル"
-;
+comment="商品情報テーブル";
+
 insert into product_info values
 ( 1, 1,"本１","ほん１","本１の商品詳細",2,100,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
 ( 2, 2,"本２","ほん２","本２の商品詳細",2,200,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
@@ -153,6 +155,7 @@ insert into product_info values
 ( 80,80,"おもちゃ・ゲーム８０","おもちゃ・げーむ８０","おもちゃ・ゲーム８の商品詳細",4,200,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
 ( 81,81,"おもちゃ・ゲーム８１","おもちゃ・げーむ８１","おもちゃ・ゲーム９の商品詳細",4,300,"./images","sample.jpg",now(),"発売会社",0,now(),now());
 
+
 create table cart_info(
 id int primary key not null auto_increment comment "ID",
 user_id varchar(16) not null comment "ユーザーID",
@@ -164,8 +167,8 @@ regist_date datetime not null comment "登録日",
 update_date datetime comment "更新日"
 )
 default charset=utf8
-comment="カート情報テーブル"
-;
+comment="カート情報テーブル";
+
 
 create table purchase_history_info(
 id int primary key not null auto_increment comment "ID",
@@ -180,8 +183,8 @@ foreign key(user_id) references user_info(user_id),
 foreign key(product_id) references product_info(product_id)
 )
 default charset=utf8
-comment="購入履歴情報テーブル"
-;
+comment="購入履歴情報テーブル";
+
 
 create table destination_info(
 id int primary key not null auto_increment comment "ID",
@@ -197,10 +200,11 @@ regist_date datetime not null comment "登録日",
 update_date datetime not null comment "更新日"
 )
 default charset=utf8
-comment="宛先情報テーブル"
-;
+comment="宛先情報テーブル";
+
 insert into destination_info values
 (1,"guest","インターノウス","テストユーざー","いんたーのうす","てすとゆーざー","guest@internous.co.jp","080-1234-5678","東京都千代田区三番町１ー１　ＫＹ三番町ビル１Ｆ",now(),"0000-00-00 00:00:00");
+
 
 create table m_category(
 id int primary key not null comment "ID",
@@ -211,8 +215,8 @@ insert_date datetime not null comment "登録日",
 update_date datetime comment "更新日"
 )
 default charset=utf8
-comment="カテゴリマスタテーブル"
-;
+comment="カテゴリマスタテーブル";
+
 insert into m_category values
 (1,1,"全てのカテゴリー","本、家電・パソコン、おもちゃ・ゲーム全てのカテゴリーが対象となります",now(), null),
 (2,2,"本","本に関するカテゴリーが対象となります",now(),null),

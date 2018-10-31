@@ -30,20 +30,17 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 		int count = UserInfoDao.createUser(familyName,firstName,familyNameKana,firstNameKana,sex,email,loginId,password);
 		
 		if(count > 0) {
-			
 			result = SUCCESS;
 		}
 		return result;
 	}
-
+	
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getFamilyName() {
 		return familyName;
 	}
@@ -98,5 +95,4 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }

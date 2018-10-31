@@ -40,17 +40,14 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 		String result = ERROR;
 
 		if(session.containsKey("loginId")) {
-			
 			DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 			List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 			
 			try {
 				destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
-				
 				Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
 				
 				if(!(iterator.hasNext())) {
-					
 					destinationInfoDtoList = null;
 				}
 				session.put("destinationInfoDtoList", destinationInfoDtoList);
@@ -102,6 +99,7 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 
 		if(!session.containsKey("loginId")) {
 			result = ERROR;
+			
 		}else {
 			result = SUCCESS;
 		}

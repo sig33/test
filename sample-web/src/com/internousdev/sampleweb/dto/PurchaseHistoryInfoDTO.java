@@ -181,5 +181,4 @@ public class PurchaseHistoryInfoDTO {
 	public void setSubtotal(int subtotal) {
 		this.subtotal = subtotal;
 	}
-
 }

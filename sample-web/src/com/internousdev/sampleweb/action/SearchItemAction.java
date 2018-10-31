@@ -35,7 +35,6 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		InputChecker inputChecker = new InputChecker();
 		
 		if(keywords==null) {
-			
 			keywords="";
 		}
 		keywordsErrorMessageList = inputChecker.doCheck("検索ワード", keywords, 0, 16, true, true, true, true, false,true,true);
@@ -43,7 +42,6 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 		
 		switch (categoryId) {
-		
 			case "1":
 				productInfoDtoList = productInfoDAO.getProductInfoListAll(keywords.replaceAll("　", " ").split(" "));
 				result = SUCCESS;
@@ -55,6 +53,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 				break;
 		}
 		Iterator<ProductInfoDTO> iterator = productInfoDtoList.iterator();
+		
 		if(!(iterator.hasNext())) {
 			productInfoDtoList = null;
 		}
@@ -69,8 +68,10 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 	if(!(productInfoDtoList==null)) {
 		Pagination pagination = new Pagination();
 		PaginationDTO paginationDTO = new PaginationDTO();
+		
 		if(pageNo==null) {
 			paginationDTO = pagination.initialize(productInfoDtoList, 9);
+			
 		}else {
 			paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
 		}
@@ -85,30 +86,25 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 		session.put("nextPage", paginationDTO.hasNextPage());
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
+		
 		}else {
 			session.put("productInfoDtoList", null);
 		}
 		return result;
 	}
-
+	
 	public String getPageNo() {
 		return pageNo;
 	}
-
-
 	public void setPageNo(String pageNo) {
 		this.pageNo = pageNo;
 	}
-
-
 	public List<MCategoryDTO> getmCategoryDtoList() {
 		return mCategoryDtoList;
 	}
-
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
 	}
-
 	public String getCategoryId() {
 		return categoryId;
 	}

@@ -28,40 +28,34 @@ public class CreateDestinationCompleteAction extends ActionSupport implements Se
 	public String execute() {
 		
 		String result = ERROR;
+		
 		DestinationInfoDAO destinationInfoDao = new DestinationInfoDAO();
 		int count = destinationInfoDao.insert(String.valueOf(session.get("loginId")), familyName, firstName, familyNameKana, firstNameKana, email, telNumber, userAddress);
 		
 		if(count > 0) {
-			
 			result = SUCCESS;
 		}
 		return result;
 	}
-
+	
 	public String getSex() {
 		return sex;
 	}
-
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 	public List<String> getSexList() {
 		return sexList;
 	}
-
 	public void setSexList(List<String> sexList) {
 		this.sexList = sexList;
 	}
-
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getFamilyName() {
 		return familyName;
 	}

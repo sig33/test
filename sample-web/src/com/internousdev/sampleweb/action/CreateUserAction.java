@@ -50,7 +50,6 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		}else {
 			session.put("sex", String.valueOf(session.get("sex")));
 		}
-		
 		sexList.add(MALE);
 		sexList.add(FEMALE);
 		session.put("sexList", sexList);
@@ -61,15 +60,13 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		result = SUCCESS;
 		return result;
 	}
-
+	
 	public String getCategoryId() {
 		return categoryId;
 	}
-
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	public String getFamilyName() {
 		return familyName;
 	}
